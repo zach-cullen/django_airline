@@ -5,7 +5,7 @@ class Airport(models.Model):
   city = models.CharField(max_length=64)
 
   def __str__(self):
-    return f"{selfcity} ({self.code})"
+    return f"{self.city} ({self.code})"
 
 # Create your models here.
 class Flight(models.Model):
