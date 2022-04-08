@@ -7,7 +7,7 @@ from django.urls import reverse
 # Create your views here.
 def index(request):
   if not request.user.is_authenticated:
-    return HttpResponseRedirect(reverse("login"))
+    return HttpResponseRedirect(reverse("users:login"))
 
   return render(request, "users/index.html", {
     "users": User.objects.all()
@@ -31,4 +31,7 @@ def login_view(request):
   return render(request, "users/login.html")
 
 def logout_view(request):
-  pass
+  logout(request)
+  return render(request, "users/login.html", {
+    "message": "You have been logged out"
+  })
